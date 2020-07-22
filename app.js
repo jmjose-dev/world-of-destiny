@@ -18,6 +18,11 @@ app.get("/", function (req, res) {
    res.render("index.ejs");
   });
 
+app.get("/story", function (req, res)
+{
+    res.render("about.ejs");
+});
+
 app.listen(port, function () {
     console.log("Server is running");
   });
