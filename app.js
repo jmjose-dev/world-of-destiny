@@ -12,13 +12,20 @@ app.use(bP.urlencoded({extended: true}));
 app.use(ex.static("public"));
 app.use(methodOverride("_method"));
 app.use(sanitizer());
-var APIkey="ec446cb08abe44b3a0577aa0919da699";
-var HeadersToUse="X-API-Key: your-api-key-here";
+var apiKey="ec446cb08abe44b3a0577aa0919da699";
+var HeadersToUse="X-API-Key: ec446cb08abe44b3a0577aa0919da699";
+const options = {
+    url: 'https://www.bungie.net/Platform/Destiny2/Manifest/',
+    method: 'GET',
+    headers: {
+        'X-API-Key': 'ec446cb08abe44b3a0577aa0919da699',
+    }
+};
 app.get("/", function (req, res) {
-    request("http://www.bungie.net/d1/Platform/Destiny/Explorer/Items/", function(error, response, body){
+    request(options, function(error, response, body){
     if(!error && response.statusCode == 200){
         var parsedData = JSON.parse(body);
-        console.log(parsedData);
+        console.log(parsedData.Response.jsonWorldComponentContentPaths.en.DestinyEnemyRaceDefinition);
     }
     else{
         console.log(error);
