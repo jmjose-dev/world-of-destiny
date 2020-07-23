@@ -14,8 +14,10 @@ app.use(methodOverride("_method"));
 app.use(sanitizer());
 var apiKey="ec446cb08abe44b3a0577aa0919da699";
 var HeadersToUse="X-API-Key: ec446cb08abe44b3a0577aa0919da699";
+//main content of Destiny 2 Manifest but too large for my system: https://www.bungie.net/common/destiny2_content/json/en/aggregate-fdddf2ca-57f5-4da0-88d9-10be10a553d5.json
+
 const options = {
-    url: 'https://www.bungie.net/Platform/Destiny2/Manifest/',
+    url: '',
     method: 'GET',
     headers: {
         'X-API-Key': 'ec446cb08abe44b3a0577aa0919da699',
@@ -25,7 +27,7 @@ app.get("/", function (req, res) {
     request(options, function(error, response, body){
     if(!error && response.statusCode == 200){
         var parsedData = JSON.parse(body);
-        console.log(parsedData.Response.jsonWorldComponentContentPaths.en.DestinyEnemyRaceDefinition);
+        console.log(parsedData);
     }
     else{
         console.log(error);
